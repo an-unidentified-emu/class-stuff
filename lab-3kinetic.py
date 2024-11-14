@@ -41,14 +41,11 @@ cStds = [
 ]
 
 
-print(bMeans)
-print(bStds)
-
 static_pull_force_values = data[(data['TypeofForce'] == 'B') & (data['Angle'] == 0)]['Pull-Force']
 kinetic_pull_force_values = data[(data['TypeofForce'] == 'C') & (data['Angle'] == 0)]['Pull-Force']
-temp = data[(data['TypeofForce'] == 'B') & (data['Angle'] == 0)]['Un-Force']
+temp = data[(data['TypeofForce'] == 'C') & (data['Angle'] == 0)]['Un-Force']
 
-slope = np.sum(Gforce * bMeans) / np.sum(Gforce**2)
+slope = np.sum(Gforce * cMeans) / np.sum(Gforce**2)
 slope_upper = slope + SLOPE_UNC
 slope_lower = slope - SLOPE_UNC
 
@@ -59,7 +56,7 @@ y_fit_lower = slope_lower * Gforce_extended
 y_fit_upper = slope_upper * Gforce_extended
 print(slope)
 fig1 = plt.figure()
-plt.errorbar(Gforce, bMeans, bStds, fmt='.', color='red')
+plt.errorbar(Gforce, cMeans, cStds, fmt='.', color='red')
 plt.plot(Gforce_extended, y_fit, color = 'green')
 # Plot thin lines for upper and lower bounds
 plt.plot(Gforce_extended, y_fit_upper, color='blue', linestyle='--', linewidth=0.8)
