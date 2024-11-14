@@ -3,6 +3,7 @@ import numpy as np              # For working with numerical arrays
 import pandas as pd             # *NEW* For easily importing spreadsheet data
 import matplotlib.pyplot as plt # For easy plotting
 
+SLOPE_UNC = 0.0117
 data = pd.read_csv("data.csv", index_col='Trial')
 # Filter rows based on TypeofForce, Angle, and Mass, then select Pull-Force column 
 #pull_force_values = data[(data['TypeofForce'] == 'B') & (data['Angle'] == 0) & (data['Mass'] == 556.4)]['Pull-Force']
@@ -21,21 +22,32 @@ stds =  [data[(data['TypeofForce'] == 'B') & (data['Angle'] == 0) & (data['Mass'
          data[(data['TypeofForce'] == 'B') & (data['Angle'] == 0) & (data['Mass'] == 10556.4)]['Pull-Force'].std()]
 
 print(means)
+print(stds)
+
 pull_force_values = data[(data['TypeofForce'] == 'B') & (data['Angle'] == 0)]['Pull-Force']
 temp = data[(data['TypeofForce'] == 'B') & (data['Angle'] == 0)]['Un-Force']
 
-'''
-fig1 = plt.figure()
-plt.hist(pull_force_values, bins=int(np.sqrt(len(pull_force_values))), color='red', edgecolor='black')
-plt.xlabel("Pull Force (N)")
-plt.ylabel("# of Trials")
-plt.show()
-'''
 slope = np.sum(Gforce * means) / np.sum(Gforce**2)
-y_fit = slope * Gforce
+slope_upper = slope + SLOPE_UNC
+slope_lower = slope - SLOPE_UNC
+
+Gforce_extended = np.linspace(0, max(Gforce) * 1.2, 100)
+
+y_fit = slope * Gforce_extended
+y_fit_lower = slope_lower * Gforce_extended
+y_fit_upper = slope_upper * Gforce_extended
 print(slope)
 fig1 = plt.figure()
 plt.errorbar(Gforce, means, stds, fmt='.', color='red')
-plt.plot(Gforce, y_fit, color = 'green')
+plt.plot(Gforce_extended, y_fit, color = 'green')
+# Plot thin lines for upper and lower bounds
+plt.plot(Gforce_extended, y_fit_upper, color='blue', linestyle='--', linewidth=0.8)
+plt.plot(Gforce_extended, y_fit_lower, color='blue', linestyle='--', linewidth=0.8)
+
+# Fill the area between the upper and lower bounds with a gray shade
+plt.fill_between(Gforce_extended, y_fit_lower, y_fit_upper, color='gray', alpha=0.3)
+
+plt.xlim(0,125)
+plt.ylim(0,45)
 
 plt.show()
