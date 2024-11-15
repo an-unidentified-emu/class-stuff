@@ -88,7 +88,7 @@ plt.fill_between(Gforce_extended, y_fit_lower, y_fit_upper, color='gray', alpha=
 
 # General Graph stuff
 plt.legend(loc='upper left', fontsize='small', frameon=True)
-plt.xlim(0,125)
+plt.xlim(0,120)
 plt.ylim(0,45)
 plt.grid(True,'both','both')
 plt.xlabel("Force of Gravity (N)")
