@@ -61,7 +61,7 @@ fig1 = plt.figure()
 
 # Static force error bars and line of best fit
 plt.errorbar(Gforce, bMeans, bStds, fmt='.', color='red', label='Static Force Data')
-plt.plot(Gforce_extended, y_fit, color='red', label='Static Force Fit')
+plt.plot(Gforce_extended, y_fit, color='red', label=f'Static Force Fit')
 plt.plot(Gforce_extended, y_fit_upper, color='blue', linestyle='--', linewidth=0.8)
 plt.plot(Gforce_extended, y_fit_lower, color='blue', linestyle='--', linewidth=0.8)
 plt.fill_between(Gforce_extended, y_fit_lower, y_fit_upper, color='gray', alpha=0.3)
@@ -93,5 +93,5 @@ plt.ylim(0,45)
 plt.grid(True,'both','both')
 plt.xlabel("Force of Gravity (N)")
 plt.ylabel("Pull Force (N)")
-
-plt.show()
+plt.savefig("flat-both.svg", format = 'svg')
+#plt.show()

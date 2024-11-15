@@ -95,4 +95,4 @@ plt.grid(True,'both','both')
 plt.xlabel("Force of Gravity (N)")
 plt.ylabel("Pull Force (N)")
 
-plt.show()
+plt.savefig("angled-both.svg", format = 'svg')

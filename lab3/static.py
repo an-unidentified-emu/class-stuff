@@ -59,4 +59,5 @@ plt.ylim(0,45)
 plt.xlabel("Force of Gravity (N)")
 plt.ylabel("Static Pull Force (N)")
 
-plt.show()
+plt.savefig("static-0.png")
+#plt.show()

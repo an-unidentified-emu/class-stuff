@@ -31,3 +31,9 @@ Friction is a force encountered in almost all physics experiments. It is a "forc
 Accepted theory states that there are two different coefficients of friction, one for static friction, $f_s = mu_s F_N$ and one for kinetic friction $f_k = mu_k F_N$
 
 == Results
+#figure(image("flat-both.svg"), caption: [
+  Static and Kinetic Forces on a flat surface
+])
+#figure(image("angled-both.svg"), caption: [
+  Static and Kinetic Forces on an angle
+])
