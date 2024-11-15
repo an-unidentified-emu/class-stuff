@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt # For easy plotting
 
 data = pd.read_csv("data.csv", index_col='Trial')
 
-pull_force_values = data[(data['TypeofForce'] == 'B') & (data['Angle'] == 0) & (data['Mass'] == 5556.4) & (data['Date'] == '10/31/24')]['Pull-Force']
+pull_force_values = data[(data['TypeofForce'] == 'B') & (data['Angle'] == 0) & (data['Mass'] == 556.4) & (data['Date'] == '10/31/24')]['Pull-Force']
 
 
 fig1 = plt.figure()

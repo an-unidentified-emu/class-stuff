@@ -10,7 +10,7 @@ pull_force_values = data[(data['TypeofForce'] == 'B') & (data['Angle'] == 0) & (
 
 fig1 = plt.figure()
 #plt.grid()
-plt.hist(pull_force_values, bins=9, color='red', edgecolor='black')
+plt.hist(pull_force_values, bins=9, color='blue', alpha=0.7, edgecolor='black')
 
 # Define tick positions starting from 1.4 with a step of 4/45
 step = 4/45
@@ -28,6 +28,7 @@ for x in ticks:
 
 
 plt.xticks(ticks, tick_labels)
-plt.xlabel("Pull Force (N)")
-plt.ylabel("# of Trials")
-plt.show()
+plt.xlabel("Static Pull Force (N)")
+plt.ylabel("# of Trials (out of 100)")
+plt.savefig("histo.svg", format = 'svg')
+#plt.show()

@@ -5,7 +5,7 @@
 )
 //https://www.britannica.com/science/friction
 #set page(
-  paper: "us-letter",
+  paper: "a4",
   number-align: center,
 )
 
@@ -31,9 +31,12 @@ Friction is a force encountered in almost all physics experiments. It is a "forc
 Accepted theory states that there are two different coefficients of friction, one for static friction, $f_s = mu_s F_N$ and one for kinetic friction $f_k = mu_k F_N$
 
 == Results
-#figure(image("flat-both.svg"), caption: [
+#figure(image("flat-both.svg", width: 90%), caption: [
   Static and Kinetic Forces on a flat surface
 ])
-#figure(image("angled-both.svg"), caption: [
+#figure(image("angled-both.svg", width: 90%), caption: [
   Static and Kinetic Forces on an angle
+])
+#figure(image("histo.svg", width: 90%), caption: [
+  Spread of Pull Force required to move 556.4 grams
 ])
