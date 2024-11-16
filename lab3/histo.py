@@ -17,7 +17,7 @@ step = 4/45
 ticks = np.arange(1.4, 2.2 + step, step)
 
 # Generate tick labels in mixed number format
-tick_labels = []
+'''tick_labels = []
 for x in ticks:
     whole_number = int(x)
     numerator = int(round((x - whole_number) * 45))
@@ -27,7 +27,7 @@ for x in ticks:
         tick_labels.append(f"${whole_number} \\frac{{{numerator}}}{{45}}$")
 
 
-plt.xticks(ticks, tick_labels)
+plt.xticks(ticks, tick_labels)'''
 plt.xlabel("Static Pull Force (N)")
 plt.ylabel("# of Trials (out of 100)")
 plt.savefig("histo.svg", format = 'svg')

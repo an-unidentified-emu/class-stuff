@@ -62,7 +62,7 @@ fig1 = plt.figure()
 
 # Static force error bars and line of best fit
 plt.errorbar(Gforce, bMeans, bStds, fmt='.', color='red', label='Static Force Data')
-plt.plot(Gforce_extended, y_fit, color='red', label='Static Force Fit')
+plt.plot(Gforce_extended, y_fit, color='red', label=f'Static Force Fit\ny={slope:.2f} ± {SLOPE_UNC_B}x')
 plt.plot(Gforce_extended, y_fit_upper, color='blue', linestyle='--', linewidth=0.8)
 plt.plot(Gforce_extended, y_fit_lower, color='blue', linestyle='--', linewidth=0.8)
 plt.fill_between(Gforce_extended, y_fit_lower, y_fit_upper, color='gray', alpha=0.3)
@@ -82,7 +82,7 @@ print(slope)
 
 # Kinetic force error bars and line of best fit
 plt.errorbar(Gforce, cMeans, cStds, fmt='.', color='green', label='Kinetic Force Data')
-plt.plot(Gforce_extended, y_fit, color='green', label='Kinetic Force Fit')
+plt.plot(Gforce_extended, y_fit, color='green', label=f'Kinetic Force Fit\ny={slope:.2f} ± {SLOPE_UNC_C}x')
 plt.plot(Gforce_extended, y_fit_upper, color='blue', linestyle='--', linewidth=0.8)
 plt.plot(Gforce_extended, y_fit_lower, color='blue', linestyle='--', linewidth=0.8)
 plt.fill_between(Gforce_extended, y_fit_lower, y_fit_upper, color='gray', alpha=0.3)
