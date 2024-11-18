@@ -7,6 +7,7 @@
 #set page(
   paper: "a4",
   number-align: center,
+  numbering: "1"
 )
 
 #show figure: set text(size: 10pt, rgb("#0029dd"))
@@ -23,20 +24,20 @@ Friction\ Micah Mast\ Partners: Noah Sanderson, Carter Cashin\ Daniel King\ Nove
 #set align(left)
 #set par(
   first-line-indent: 3em,
-  spacing: 0.65em,
+  spacing: 1.2em,
   justify: true,
 )
 == Introduction
-Friction is a force encountered in almost all physics experiments. It is a "force that resists the sliding or rolling of one solid object over another" [1]. Friction is a macroscopic summation of many microscopic forces acting between two surfaces. Friction is proportional to the normal force on an object and can be expressed as $f = mu F_N$ where $f$ is the force of friction, $F_N$ is the normal force and $mu$ is the _coefficient of friction_. The purpose of this lab is to find the coefficient of friction between two pieces of wood.
+Friction is a force encountered in almost all physics experiments. It is a "force that resists the sliding or rolling of one solid object over another" #cite(<zeidan_2019_friction>). Friction is a macroscopic summation of many microscopic forces acting between two surfaces. Friction is proportional to the normal force on an object and can be expressed as $F_f = mu F_N$ where $F_f$ is the force of friction, $F_N$ is the normal force and $mu$ is the _coefficient of friction_. The purpose of this lab is to find the coefficient of friction between two pieces of wood.
 
 == Methods
-Accepted theory states that there are two different coefficients of friction, one for static friction, $f_s = mu_s F_N$ and one for kinetic friction $f_k = mu_k F_N$. To find these coefficients, A board was pulled across another board tangentally. The force required to move the board from a static start was measured as well as the force require to move it at a constant speed. This was done using a spring scale. These forces were measured for four different masses at an angle of zero, where the normal force is directly proportional to the mass times the force of gravity: $f = mu m g$, and up a slope of $7.89 degree$ where the friction force is $f = mu cos(theta) m g $.
+Accepted theory states that there are two different coefficients of friction, one for static friction, $f_s = mu_s F_N$ and one for kinetic friction $f_k = mu_k F_N$. To find these coefficients, A board was pulled across another board tangentally. The force required to move the board from a static start was measured as well as the force require to move it at a constant speed. This was done using a spring scale. These forces were measured for four different masses at an angle of zero, where the normal force is directly proportional to the mass times the force of gravity: $F_f = mu m g$, and up a slope of $7.86 degree$ where the friction force is $F_f = mu F_N $. However, because neither the normal force nor the friction force can be measured directly, the force of gravity acting on the board is measured as well as the pulling force and their relative components are summed. This leaves us with $F_p - m g sin(theta) = mu cos(theta) m g$ where $F_f = F_p - m g sin(theta)$ and $F_N = cos(theta) m g$. By doing these transformations, it will be possible to plot the normal force on the x axis and the friction force on the y axis, allowing a linear regression to find the coefficient of friction. 
 == Results
 #figure(image("static-both.svg", width: 90%), caption: [
-  Static and Kinetic Forces on a flat surface
+  Relation between Normal Force and Static Friction Force on a flat surface and a $7.86 degree$ angle
 ])
 #figure(image("kinetic-both.svg", width: 90%), caption: [
-  Static and Kinetic Forces on an angle
+  Relation between Normal Force and Kinetic Friction Force on a flat surface and a $7.86 degree$ angle
 ])
 #figure(image("histo.svg", width: 90%), caption: [
   Spread of Pull Force required to move 556.4 grams at $0 degree$
@@ -44,6 +45,36 @@ Accepted theory states that there are two different coefficients of friction, on
 #figure(image("histo2.svg", width: 90%), caption: [
   Spread of Pull Force required to move 5556.4 grams at $0 degree$
 ])
+//#show figure: set text(size: 12pt, rgb("#000000"))
+//#figure(table(columns: 4, align: auto, "Gravity Force", "Normal Force", "Pull Force", "Friction Force", "1.76", "1.76","2.91","2.91", "15.3","15.3","39.2","39.2" ))
+//#show figure: set text(size: 10pt, rgb("#0029dd"))
 #pagebreak()
 == Discussion
-The data shows that between the two pieces of wood on a flat plane, the coefficient of friction is $0.36 plus.minus 0.01$ for static friction and $0.22 plus.minus 0.02$ for kinetic. On an incline, the slope of the lines were $0.46$ and $0.32$ respectively, however, these are not the coefficients of friction because of the incline. To find the coefficients, the values are multipled by $cos(7.86 degree)$ to compensate for the angle leaving us with $0.45 + 0.043$ and $0.31 + 0.0219$. These numbers are very different, however, different scales were used to measure higher force values. If a linear regression is only applied to the smallest two masses, the new calculated coefficient is $0.39 +$ (do your math). This still shows a difference but the error is larger with only these points. The larger scales used for the heaviest masses were much less precise, potentially causing this error. 
+The data shows that between the two pieces of wood on a flat plane, the coefficient of friction is $0.36 plus.minus 0.01$ for static friction and $0.22 plus.minus 0.02$ for kinetic. When force was measured on an incline, the coefficients were found to be $0.32 plus.minus 0.03$ and $0.19 plus.minus 0.03$ respectively. These are within error for each other showing that between two materials, there is an unchanging friction coefficient relating the normal force and the friction force.
+
+This coefficient between two materials is different for static situations and kinetic ones. It must also be noted that this relates the normal force and and friction force, not the acting force of gravity and the pulling force. (For gravity and pulling force relations see Figures 5 and 6). However, the force of gravity and normal force are related. The normal force is the $Y$ component of $m g$ in this situation or $F_N = cos(theta) m g $ and friction force is related to the pulling force by $F_f = F_p - m g sin(theta)$. 
+
+The histograms (Figures 3 and 4) are roughly normal demonstrating consistency of the relationship between pulling force and normal force and therefore between friction force and normal force. 
+
+The coefficients found align with standard values between two pieces of wood which fall between 0.25 and 0.5 for static friction #cite(<engineeringtoolbox_2004_friction>).
+
+== Conclusion
+The coefficient of friction between two materials is constant regardless of other forces applied to the objects. This is proved by the overlapping coefficients found when measuring on a slope of $7.86 degree$ and $0 degree$. 
+
+#pagebreak()
+
+#bibliography("works.bib")
+
+#pagebreak()
+== Appendix 1 - Additional Graphs
+#figure(image("flat-both.svg", width: 90%), caption: [
+  Static and Kinetic forces on a flat plane
+])
+#figure(image("angled-both.svg", width: 90%), caption: [
+  Static and Kinetic forces on a $7.86 degree$ plane
+])
+#figure(image("angled-mod.svg", width: 90%), caption: [
+  Static and Kinetic forces on a $7.86 degree$ plane. Same data used as Figure 6 but adjusted to Normal and Friction Force.
+])
+#pagebreak()
+== Appendix 2 - Calculations
