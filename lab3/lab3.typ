@@ -35,7 +35,7 @@ Accepted theory states that there are two different coefficients of friction, on
 #figure(image("flat-both.svg", width: 90%), caption: [
   Static and Kinetic Forces on a flat surface
 ])
-#figure(image("angled-both.svg", width: 90%), caption: [
+#figure(image("angled-mod.svg", width: 90%), caption: [
   Static and Kinetic Forces on an angle
 ])
 #figure(image("histo.svg", width: 90%), caption: [
