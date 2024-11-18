@@ -3,8 +3,8 @@ import numpy as np              # For working with numerical arrays
 import pandas as pd             # *NEW* For easily importing spreadsheet data
 import matplotlib.pyplot as plt # For easy plotting
 
-SLOPE_UNC_B = 0.0117
-SLOPE_UNC_C = 0.0246
+SLOPE_UNC_B = 0.0346
+SLOPE_UNC_C = 0.0221
 ANGLE = 7.86
 DATE = '10/31/24'
 data = pd.read_csv("data.csv", index_col='Trial')
@@ -13,6 +13,7 @@ data = pd.read_csv("data.csv", index_col='Trial')
 Gforce = list(set(data[(data['TypeofForce'] == 'B') & (data['Angle'] == 0)]['Gravity-Force']))
 Gforce.sort()
 Gforce = np.array(Gforce, dtype=np.float64)/1000
+#Gforce = Gforce[:2]
 
 bMeans = [
     data[(data['TypeofForce'] == 'B') & (data['Angle'] == ANGLE) & (data['Mass'] ==   556.4 ) & (data['Date'] == DATE)] ['Pull-Force'].mean(),
@@ -41,10 +42,6 @@ cStds = [
     data[(data['TypeofForce'] == 'C') & (data['Angle'] == ANGLE) & (data['Mass'] ==  5556.4 ) & (data['Date'] == DATE)] ['Pull-Force'].std(),
     data[(data['TypeofForce'] == 'C') & (data['Angle'] == ANGLE) & (data['Mass'] == 10556.4 ) & (data['Date'] == DATE)] ['Pull-Force'].std()
 ]
-
-
-print(bMeans)
-print(bStds)
 
 # Static Force
 static_pull_force_values = data[(data['TypeofForce'] == 'B') & (data['Angle'] == 0)]['Pull-Force']
