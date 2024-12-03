@@ -6,6 +6,7 @@ data = pd.read_csv("raw.csv", index_col='Trial')
 
 angles = [30, 45, 60]
 x = np.arange(1, 6)
+x_extended = np.arange(-1,8)
 # Initialize arrays
 Measured = np.zeros(len(angles))
 Theoretical = np.zeros(len(angles))
@@ -21,29 +22,38 @@ for angle in angles:
 Measured_std = [np.full_like(arr, np.std(arr, ddof=0)) for arr in Measured]
 Theoretical_std = [np.full_like(arr, np.std(arr, ddof=0)) for arr in Theoretical]
 
+Measured_mean = [np.pad(np.full_like(arr, np.mean(arr)), (0,4),constant_values=np.mean(arr)) for arr in Measured]
+Theoretical_mean = [np.pad(np.full_like(arr, np.mean(arr)), (0,4),constant_values=np.mean(arr)) for arr in Theoretical]
+
 fig, axs = plt.subplots(3, 1, figsize=(5, 10), sharey="row")
 
 # Left subplot
-axs[0].errorbar(x, Measured[0], Measured_std[0], fmt='.', color='red', label='Measured')
-axs[0].errorbar(x, Theoretical[0], Theoretical_std[0], fmt='.', color='blue', label='Theoretical')
-axs[0].set_title("30 degrees")
-axs[0].legend()
-axs[0].set_ylabel("Distance")
+for i in range(0,3):
+    # Measured
+    upper = [Measured_mean[i][j] + Measured_std[i][1] for j in range(len(Measured_mean[i]))]
+    lower = [Measured_mean[i][j] - Measured_std[i][1] for j in range(len(Measured_mean[i]))]
+    axs[i].errorbar(x,    Measured[i], fmt='.', color='red', label='Measured')
+    axs[i].plot(x_extended, Measured_mean[i], color = 'red')
+    axs[i].plot(x_extended, upper, color='green', linestyle='--', linewidth=0.8)
+    axs[i].plot(x_extended, lower, color='green', linestyle='--', linewidth=0.8)
+    axs[i].fill_between(x_extended, lower, upper, color='gray', alpha=0.3)
 
-# Middle subplot
-axs[1].errorbar(x, Measured[1], Measured_std[1], fmt='.', color='red', label='Measured')
-axs[1].errorbar(x, Theoretical[1], Theoretical_std[1], fmt='.', color='blue', label='Theoretical')
-axs[1].set_title("45 degrees")
-axs[1].set_xlabel("Trial")
+    # Theoretical
+    upper = [Theoretical_mean[i][j] + Theoretical_std[i][1] for j in range(len(Theoretical_mean[i]))]
+    lower = [Theoretical_mean[i][j] - Theoretical_std[i][1] for j in range(len(Theoretical_mean[i]))]
+    axs[i].errorbar(x, Theoretical[i], fmt='.', color='blue', label='Theoretical')
+    axs[i].plot(x_extended, Theoretical_mean[i], color = 'blue')
+    axs[i].plot(x_extended, upper, color='green', linestyle='--', linewidth=0.8)
+    axs[i].plot(x_extended, lower, color='green', linestyle='--', linewidth=0.8)
+    axs[i].fill_between(x_extended, lower, upper, color='gray', alpha=0.3)
 
-# Right subplot
-axs[2].errorbar(x, Measured[2], Measured_std[2], fmt='.', color='red', label='Measured')
-axs[2].errorbar(x, Theoretical[2], Theoretical_std[2], fmt='.', color='blue', label='Theoretical')
-axs[2].set_title("60 degrees")
-
-# General layout
-for ax in axs:
-    ax.grid(True)
+    # Graph Stuff
+    axs[i].set_title(f"{(i*15+30)} degrees")
+    axs[i].legend()
+    axs[i].grid(True)
+    axs[i].set_xlabel("Trial")
+    axs[i].set_ylabel("Distance")
+    axs[i].set_xlim(0,6)
 
 plt.tight_layout()
 plt.savefig("start.svg", format = 'svg')

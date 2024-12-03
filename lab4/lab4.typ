@@ -8,7 +8,7 @@
 #show: theme.with(
   primary-color: rgb("#0c2513"), // Dark blue
   background-color: rgb("#c0c0c0"),
-  accent-color: rgb("#7d7e8b"), // Yellow
+  accent-color: rgb("#ffffff"), // Yellow
   titletext-color: white,
   titletext-size: 2em,
 )
