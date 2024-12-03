@@ -30,7 +30,7 @@
 
   #focus-box[
     = Results
-    #lorem(40)
+    #figure(image("start.svg", width: 100%))
 
   ]
 
