@@ -27,13 +27,13 @@ Theoretical_mean = [np.pad(np.full_like(arr, np.mean(arr)), (0,4),constant_value
 
 fig, axs = plt.subplots(3, 1, figsize=(5, 10), sharey="row")
 
-# Left subplot
+# Subplots
 for i in range(0,3):
     # Measured
     upper = [Measured_mean[i][j] + Measured_std[i][1] for j in range(len(Measured_mean[i]))]
     lower = [Measured_mean[i][j] - Measured_std[i][1] for j in range(len(Measured_mean[i]))]
     axs[i].errorbar(x,    Measured[i], fmt='.', color='red', label='Measured')
-    axs[i].plot(x_extended, Measured_mean[i], color = 'red')
+    axs[i].plot(x_extended, Measured_mean[i], color = 'red',linestyle='--')
     axs[i].plot(x_extended, upper, color='green', linestyle='--', linewidth=0.8)
     axs[i].plot(x_extended, lower, color='green', linestyle='--', linewidth=0.8)
     axs[i].fill_between(x_extended, lower, upper, color='gray', alpha=0.3)
@@ -42,7 +42,7 @@ for i in range(0,3):
     upper = [Theoretical_mean[i][j] + Theoretical_std[i][1] for j in range(len(Theoretical_mean[i]))]
     lower = [Theoretical_mean[i][j] - Theoretical_std[i][1] for j in range(len(Theoretical_mean[i]))]
     axs[i].errorbar(x, Theoretical[i], fmt='.', color='blue', label='Theoretical')
-    axs[i].plot(x_extended, Theoretical_mean[i], color = 'blue')
+    axs[i].plot(x_extended, Theoretical_mean[i], color = 'blue',linestyle='--')
     axs[i].plot(x_extended, upper, color='green', linestyle='--', linewidth=0.8)
     axs[i].plot(x_extended, lower, color='green', linestyle='--', linewidth=0.8)
     axs[i].fill_between(x_extended, lower, upper, color='gray', alpha=0.3)

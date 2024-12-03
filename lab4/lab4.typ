@@ -6,7 +6,7 @@
 #set text(size: 43pt)
 
 #show: theme.with(
-  primary-color: rgb("#0c2513"), // Dark blue
+  primary-color: rgb("#131246"), // Dark blue
   background-color: rgb("#c0c0c0"),
   accent-color: rgb("#ffffff"), // Yellow
   titletext-color: white,
@@ -21,7 +21,7 @@
   )
   #normal-box[
     = Introduction
-    #lorem(50)
+    When measuring projectiles in the lab, air resistance is often neglected in the name of simplicity. However it has long been known that drag force does exist and it affects objects. The equation for drag is $accent(F, arrow)_D = -F_D accent(v, hat)$. The purpose of this lab is to determine whether a measured distance is close enough to a theoretical distance calculated with the inital velocity to be accurate in a controlled environment.
   ]
   #normal-box[
     = Methods
