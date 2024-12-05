@@ -25,12 +25,12 @@
   ]
   #normal-box[
     = Methods
-   #lorem(100)
+   To determine if air resistance causes a measureable difference in distance traveled an initial velocity is measured by a calibrated photogate. A theoretical distance is then calculated using the inital height and that velocity using kinematic equations. _Put equations here_ The distance traveled is then measured using carbon paper to mark the landing spot and a tape measure pulled between the leading edge of the landing mark and the spot directly below the spot where the ball is no longer accelerated by the launch apparatus. This is repeated at three angles. The time is also estimated using kinematic equations and measured by counting the frames in a video of the trial. 
   ]
 
   #focus-box[
     = Results
-    #figure(image("start.svg", width: 100%))
+    #figure(image("TimeVelDist.svg", width: 100%))
 
   ]
 

@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd            
 import matplotlib.pyplot as plt
 angle = 45
-data = pd.read_csv("raw.csv", index_col='Trial')
+data = pd.read_csv("newData.csv", index_col='Trial')
 
 angles = [30, 45, 60]
 x = np.arange(1, 6)
@@ -16,8 +16,8 @@ Theoretical = []
 
 # Loop through each angle and filter the data
 for angle in angles:
-    Measured.append(data[data['Angle'] == angle]['M-Distance'].to_numpy())
-    Theoretical.append(data[data['Angle'] == angle]['T-Distance'].to_numpy())
+    Measured.append(data[data['Angle'] == angle]['TapeDist'].to_numpy())
+    Theoretical.append(data[data['Angle'] == angle]['AvgVelTimeDist'].to_numpy())
 
 Measured_std = [np.full_like(arr, np.std(arr, ddof=0)) for arr in Measured]
 Theoretical_std = [np.full_like(arr, np.std(arr, ddof=0)) for arr in Theoretical]
@@ -56,5 +56,5 @@ for i in range(0,3):
     axs[i].set_xlim(0,6)
 
 plt.tight_layout()
-plt.savefig("start.svg", format = 'svg')
+plt.savefig("TimeVelDist.svg", format = 'svg')
 plt.show()
