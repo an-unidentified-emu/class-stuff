@@ -36,7 +36,7 @@
 
   #normal-box[
     = Discussion
-    #lorem(150)
+    This experiment shows that in the majority of cases, air resistance is negligable. 
   ]
   #normal-box()[
     = References
