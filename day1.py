@@ -2,65 +2,48 @@ with open('data.txt', 'r') as f:
     raw = f.read()
     f.close()
 
-x = raw.split('\n')
-x_mod = []
-for i in range(len(x)):
-    x_mod.append(x[i].split(' '))
-y=[]
-def damper2(report2, problem):
-    succ = True
-    report = report2[1:]
-    i=0
-    while i < len(report)-1:
-        if i == 0:
-            if report[i+1] > report[i+2]: increase = False
-            else: increase = True
-        if report[i] < report[i+1] and not increase: succ = False
-        if report[i] > report[i+1] and increase: succ = False
-        if abs(report[i]-report[i+1]) > 3 or abs(report[i]-report[i+1]) < 1: succ = False
-        i+=1 
-    if succ == True: return True
-    else: 
-        i=0
-        succ = True
-        report = report2[:problem] + report2[problem+1:]
-        while i < len(report)-1:
-            if i == 0:
-                if report[i] > report[i+1]: increase = False
-                else: increase = True
-            if report[i] < report[i+1] and not increase: succ = False
-            if report[i] > report[i+1] and increase: succ = False
-            if abs(report[i]-report[i+1]) > 3 or abs(report[i]-report[i+1]) < 1: succ = False
-            i+=1
-    return succ 
-   
-def safety(report):
-    damper = False
-    i=0
-    while i < len(report)-1:
-        if i == 0:
-            if report[i] > report[i+1]: increase = False
-            else: increase = True
-        if report[i] < report[i+1] and not increase: damper = True
-        if report[i] > report[i+1] and increase: damper = True
-        if abs(report[i]-report[i+1]) > 3 or abs(report[i]-report[i+1]) < 1: damper = True
-        if damper == True:
-            return damper2(report, i)
-        i+=1
-    if damper == False: return True
+raw = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
+nums = ['0','1','2','3','4','5','6','7','8','9']
+validChars = ['0','1','2','3','4','5','6','7','8','9',',',')']
+def go(raw):
+    total = 0
+    while 'mul(' in raw:
+        mul = 1
+        start = raw.find('mul(')
+        data = raw[start:]
+        if isValid(data):
+            temp = data[data.find('(')+1:data.find(')')]
+            temp = temp.split(',')
+            for i in temp:
+                mul *= int(i)
+            print(mul)
+        else:
+            mul = 0
+        total += mul
+        raw = raw[start + 1:]  # Continue processing the rest of the string
+    return total
 
 
+def isValid(data):
+    spot = 0
+    for i in range(4,12):
+        try:
+            if data[i]: pass
+        except:
+            return False
+        if data[i] in nums and spot == 0:
+            spot +=1
+        if data[i] == ',' and spot == 1:
+            spot +=1
+        if data[i] in nums and spot == 2:
+            spot +=1
+        if data[i] == ')' and spot == 3: 
+            spot +=1
+        if data[i] not in validChars: return False
+        if i == 6 and spot < 1: return False
+        if i == 7 and spot < 2: return False
+        if i == 11 and spot < 3: return False
+        if i == 12 and spot < 4: return False
+        if spot == 4: return True
 
-for i in x_mod:
-    k = []
-    for j in i:
-        try: k.append(int(j))
-        except: print(j)
-    y.append(k)
-out = 0
-print(y)
-for report in y:
-    #print(safety(report))
-    if safety(report) == True: out +=1
-print(out)
-        
+print(go(raw))
