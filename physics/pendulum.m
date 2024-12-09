@@ -11,7 +11,7 @@ l=    1    ; % pendulum cord length (m)
 g=    9.81 ; % acceleration of gravity
 b=    0    ; % damping coefficient (N-s/m) or kg/s
 tsim= 10   ; % simulation time (seconds)
-disp= 10000    ; % initial condition (displacement angle in degrees)
+disp= 10    ; % initial condition (displacement angle in degrees)
 % radians = degrees x (pi/180)
 ic = disp*(pi/180);
 % remember, with small angle approximation sin theta is theta

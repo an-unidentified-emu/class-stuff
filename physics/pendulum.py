@@ -4,10 +4,10 @@ from scipy.integrate import solve_ivp
 
 # populate the code below with your input values
 m = 1     # pendulum bob mass (kg)
-l = 2     # pendulum cord length (m)
+l = 1     # pendulum cord length (m)
 g = 9.81  # acceleration of gravity (m/s^2)
 b = 0     # damping coefficient (kg/s)
-tsim = 4  # simulation time (seconds)
+tsim = 10  # simulation time (seconds)
 disp = 45  # initial condition (displacement angle in degrees)
 
 # Convert initial displacement to radians
@@ -15,7 +15,7 @@ ic = disp * (np.pi / 180)
 
 # Define the system of differential equations
 def pendulum_ode(t, x):
-    return [x[1], 1/m * (-b * x[1] - m * (g / l) * np.sin(x[0]))+ np.e**t]
+    return [x[1], 1/m * (-b * x[1] - m * (g / l) * np.sin(x[0]))]
 
 # Generate vector field
 x1 = np.linspace(-np.pi, np.pi, 80)
