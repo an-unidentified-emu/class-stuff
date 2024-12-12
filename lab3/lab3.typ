@@ -3,7 +3,7 @@
   height: 100%,
   inset: 4pt,
 )
-//https://www.britannica.com/science/friction
+
 #set page(
   paper: "a4",
   number-align: center,
