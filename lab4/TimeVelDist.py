@@ -100,7 +100,7 @@ for i in range(0,3):
     axs[i].legend()
     axs[i].grid(True)
     axs[i].set_xlabel("Trial")
-    axs[i].set_ylabel("Distance")
+    axs[i].set_ylabel("Distance (m)")
     axs[i].set_xlim(0,6)
 
 plt.tight_layout()
